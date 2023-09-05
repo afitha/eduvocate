@@ -1,0 +1,4 @@
+#AMQP_URI: "amqps://***.cloudamqp.com/***"
+AMQP_URI: 'pyamqp://guest:guest@localhost'
+MONGODB_URI: 'mongodb://localhost:27017/eduvocate'
+MONGODB_DB_NAME: eduvocate

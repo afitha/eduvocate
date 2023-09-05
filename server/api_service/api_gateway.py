@@ -3,18 +3,18 @@ from nameko.standalone.rpc import ClusterRpcProxy
 
 app = Flask(__name__)
 
-CONFIG = {'AMQP_URI': 'amqps://***.cloudamqp.com/***'}
+CONFIG = {'AMQP_URI': 'pyamqp://localhost'}
  # Config contains the amqp url to indentify your messaging cluster
 
-@app.route('/add_numbers', methods=['POST'])
-def add_numbers():
+@app.route('/add_users', methods=['POST'])
+def add_users():
         data = request.json
         token = request.headers.get('Authorization')
         with ClusterRpcProxy(CONFIG) as rpc:  
             # ClusterRpcProxy standalone proxy 
             # we can use ClusterRpcProxy block make RPC calls to any namekoh service 
             # from a non-nameko service
-            response, status = rpc.adder_service.add(data, token)
+            response, status = rpc.user_service.add(data, token)
             #calling the add function from the adder_service
             return response, status
 
